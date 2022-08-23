@@ -3,8 +3,8 @@
        .NOTES
        ==============================================================================
        Created on:         2022/04/13 
-       Created by:         Drago Petrovic & Daniel Barrera
-       Organization:       MSB365.blog & vordis technologies
+       Created by:         Drago Petrovic
+       Organization:       MSB365.blog 
        Filename:           Handle-BasicVoicePolicies.ps1
        Current version:    V1.01     
 
@@ -29,7 +29,7 @@
        ===========================================================================
        .CHANGE LOG
              V1.00, 2022/06/14 - DrPe - Initial version
-             V1.01, 2022/08/23 - KainDevOps - Assigning Voice Routing Policies, Phone number and Dial Plan policy
+             V1.01, 2022/08/23 - KainDev - Assigning Voice Routing Policies, Phone number and Dial Plan policy
 			 
 --- keep it simple, but significant ---
 #>
@@ -222,6 +222,8 @@ write-host " ░░│└┘│└─┘│┌┘└┘│┌┐│││││�
 write-host " ░░└──┴─┐┌┘└───┴┘└┴┘└┴┴──┴─┘└───┘░░ " -ForegroundColor Yellow
 write-host " ░░░░░┌─┘│░░░░░░░░░░░░░░░░░░░░░░░░░ " -ForegroundColor Yellow
 write-host " ░░░░░└──┘░░░░░░░░░░░░░░░░░░░░░░░░░ " -ForegroundColor Yellow
+write-host ""
+write-host ""
 Start-Sleep -s 1
 write-host ""                                                                                   
 write-host ""
@@ -229,15 +231,6 @@ write-host ""
 write-host ""
 write-host ""
 ###############################################################################
-
-
-
-
-
-
-
-
-
 
 
 $selection3 =  Read-Host "Would you like to connect to Microsoft Teams using this Script?? [Y] for yes / [N] for no or already connected." 
@@ -283,7 +276,7 @@ switch ($selection3)
 			Start-Sleep -s 4
 			Write-Host "**************************************************************************************************************************************" -ForegroundColor Yellow -BackgroundColor Black
 			Write-Host "* NOTE!                                                                                                                              *" -ForegroundColor Yellow -BackgroundColor Black                                                                          
-			Write-Host "* The following information are needed in the CSV file:                                                                              *"
+			Write-Host "* The following information are needed in the CSV file:                                                                              *" -ForegroundColor Yellow -BackgroundColor Black
 			Write-Host "* "UserPrincipalName","DisplayName","CanonicalPhoneNumber","ExtensionNumber","CallingIDpolicy","VoiceRoutingPolicy“,"DialPlanPolicy" *" -ForegroundColor Gray -BackgroundColor Black
 			Write-Host "**************************************************************************************************************************************" -ForegroundColor Yellow -BackgroundColor Black
 			Start-Sleep -s 6
@@ -317,8 +310,17 @@ switch ($selection3)
 			}
 			until ($selection -eq "y")
 			
-
 			start-sleep -s 3
+
+
+
+###################################################################################################################
+# uncomment code if you need Calling ID Policy to be enabled and comment if you need to disable any configuration #
+###################################################################################################################
+
+
+
+
 ##############################################################################################################
 # Configuring Teams Calling ID Policy
 #$company = $(Write-Host "Enter the Company name. Example: " -NoNewLine) + $(Write-Host """" -NoNewline) +$(Write-Host "Contoso Ltd" -ForegroundColor Yellow -NoNewline; Read-Host """")
@@ -338,7 +340,7 @@ switch ($selection3)
 #				}
 #				
 #			}
-            start-sleep -s 3
+#		start-sleep -s 3
 
 
 ##############################################################################################################
@@ -350,8 +352,8 @@ foreach($user in $users)
 			{
 				try
 				{
-					# Set-CsPhoneNumberAssignment -Identity francesco.amato@algeco.com -PhoneNumber +390577592093;ext=20407 -PhoneNumberType DirectRouting
-                    Set-CsPhoneNumberAssignment -Identity $user.UserPrincipalName -PhoneNumber $user.CanonicalPhoneNumber -PhoneNumberType DirectRouting -ErrorAction Stop ###
+					# Set-CsPhoneNumberAssignment -Identity FirstName.LastName@contoso.com -PhoneNumber +39123456789;ext=20407 -PhoneNumberType DirectRouting
+                    			Set-CsPhoneNumberAssignment -Identity $user.UserPrincipalName -PhoneNumber $user.CanonicalPhoneNumber -PhoneNumberType DirectRouting -ErrorAction Stop ###
 					Write-Host "Number $($user.CanonicalPhoneNumber) for the user $($user.DisplayName) set!" -ForegroundColor Green
 					Start-Sleep -s 1
 				}
@@ -373,8 +375,8 @@ foreach($user in $users)
 			{
 				try
 				{
-					# Grant-CsTenantDialPlan -Identity francesco.amato@algeco.com -PolicyName IT
-                    Grant-CsTenantDialPlan -Identity $user.UserPrincipalName -PolicyName $user.DialPlanPolicy -ErrorAction Stop ###
+					# Grant-CsTenantDialPlan -Identity FirstName.LastName@contoso.com -PolicyName IT-Voice-Poly
+                    			Grant-CsTenantDialPlan -Identity $user.UserPrincipalName -PolicyName $user.DialPlanPolicy -ErrorAction Stop ###
 					Write-Host "Dial Plan Policy $($user.DialPlanPolicy) for the user $($user.DisplayName) set!" -ForegroundColor Green
 					Start-Sleep -s 1
 				}
@@ -396,8 +398,8 @@ foreach($user in $users)
 			{
 				try
 				{
-					# Grant-CsOnlineVoiceRoutingPolicy -Identity francesco.amato@algeco.com -PolicyName IT-All-International
-                    Grant-CsOnlineVoiceRoutingPolicy -Identity $user.UserPrincipalName -PolicyName $user.VoiceRoutingPolicy -ErrorAction Stop ###
+					# Grant-CsOnlineVoiceRoutingPolicy -Identity FirstName.LastName@contoso.com -PolicyName IT-All-International
+                    			Grant-CsOnlineVoiceRoutingPolicy -Identity $user.UserPrincipalName -PolicyName $user.VoiceRoutingPolicy -ErrorAction Stop ###
 					Write-Host "Voice Routing Policy $($user.VoiceRoutingPolicy) for the user $($user.DisplayName) set!" -ForegroundColor Green
 					Start-Sleep -s 1
 				}
