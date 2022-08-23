@@ -5,16 +5,23 @@
        Created on:         2022/04/13 
        Created by:         Drago Petrovic
        Organization:       MSB365.blog 
+       Filename:           Handle-callingIDpolicies.ps1
+       ==============================================================================
+      
+       ==============================================================================
+       Modified on:        2022/08/23 
+       Modified by:        Daniel Barrera
+       Organization:       vordis technologies
        Filename:           Handle-BasicVoicePolicies.ps1
        Current version:    V1.01     
-
        ==============================================================================
+       
        .DESCRIPTION
-       Assign and manage Phone number, voice routing policy and Dial Plan to users (Bulk)            
+       Assign and manage Phone number, voice routing policy, Calling ID policy and Dial Plan to users (Bulk)            
        
        .NOTES
        This script can be executed without prior customisation.
-       This script is used to manage Teams usres and assign the phone number, voice routing policy and Dial Plan (bulk) with PowerShell
+       This script is used to manage Teams usres and assign the phone number, voice routing policy, calling ID policy and Dial Plan (bulk) with PowerShell
        .EXAMPLE
        .\Handle-BasicVoicePolicies.ps1
              
@@ -106,9 +113,9 @@ MIT License\par
 \pard\widctlpar\par
 \pard\widctlpar\fi-360\li360\qj 5.\tab LIMITATION ON AND EXCLUSION OF DAMAGES. IF YOU HAVE ANY BASIS FOR RECOVERING DAMAGES DESPITE THE PRECEDING DISCLAIMER OF WARRANTY, YOU CAN RECOVER FROM MICROSOFT AND ITS SUPPLIERS ONLY DIRECT DAMAGES UP TO U.S. $1.00. YOU CANNOT RECOVER ANY OTHER DAMAGES, INCLUDING CONSEQUENTIAL, LOST PROFITS, SPECIAL, INDIRECT, OR INCIDENTAL DAMAGES. This limitation applies to (i) anything related to the Software, services, content (including code) on third party Internet sites, or third party applications; and (ii) claims for breach of contract, warranty, guarantee, or condition; strict liability, negligence, or other tort; or any other claim; in each case to the extent permitted by applicable law. It also applies even if MSB365 knew or should have known about the possibility of the damages. The above limitation or exclusion may not apply to you because your state, province, or country may not allow the exclusion or limitation of incidental, consequential, or other damages.\par
 \pard\widctlpar\par
-\pard\widctlpar\fi-360\li360\qj 6.\tab ENTIRE AGREEMENT. This agreement, and any other terms MSB365 may provide for supplements, updates, or third-party applications, is the entire agreement for the software.\par
+\pard\widctlpar\fi-360\li360\qj 6.\tab ENTIRE AGREEMENT. This agreement, and any other terms may provide for supplements, updates, or third-party applications, is the entire agreement for the software.\par
 \pard\widctlpar\qj\par
-\pard\widctlpar\fi-360\li360\qj 7.\tab A partial script documentation can be found on the msb65 blog, but just a few part :o)\par
+\pard\widctlpar\fi-360\li360\qj 7.\tab A partial script documentation can be found on the msb65 blog.\par
 \pard\widctlpar\par
 \pard\sa200\sl276\slmult1\f1\fs22\lang9\par
 \pard\f2\fs17\lang2057\par
